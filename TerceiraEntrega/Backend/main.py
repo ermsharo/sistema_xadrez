@@ -1,14 +1,11 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from models import db, create_jogada_model,create_nacao_model
+
 # Create a Flask application
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///BD_2.db'
-db = SQLAlchemy(app)
-
-# Lets add the nations
-
-def add_nation():
-    print("add nation")
+db.init_app(app)
 
 # Define a route and its corresponding handler
 @app.route('/')
@@ -16,8 +13,18 @@ def hello_world():
     return 'Hello, World!'
 
 
+
+
 def main():
-    print('running main')
+  # Usage example:
+    with app.app_context():
+        Nacao = create_nacao_model()
+
+        nacoes = Nacao.query.all()
+
+        print("Aqui estão as nações:\n")
+        for nacao in nacoes:
+            print(nacao.nome)
     app.run()
 
 # Run the Flask application
