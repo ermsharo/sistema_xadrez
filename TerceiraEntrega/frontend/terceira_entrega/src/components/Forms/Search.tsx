@@ -1,6 +1,8 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
+import Locais from "./Locais";
+import Hotel from "./Hotel";
 
 function Bar() {
   return (
@@ -35,6 +37,9 @@ export default function Search() {
           defaultValue="Hello World"
         />
         <Bar />
+        <Locais />
+        <Bar />
+        <Hotel />
       </div>
     </Box>
   );
