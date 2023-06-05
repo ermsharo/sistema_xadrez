@@ -13,6 +13,8 @@ def hello_world():
     return 'Hello, World!'
 
 
+def insertIntoModel():
+    Nacao = create_nacao_model()
 
 
 def main():
