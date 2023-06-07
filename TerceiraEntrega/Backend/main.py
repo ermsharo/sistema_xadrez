@@ -13,8 +13,12 @@ def hello_world():
     return 'Hello, World!'
 
 
-def insertIntoModel():
+def add_nation():
     Nacao = create_nacao_model()
+    nova_nacao = Nacao(nome='aaaa')  # Set the attribute values during object creation
+    db.session.add(nova_nacao)
+    db.session.commit()
+
 
 
 def main():
@@ -23,7 +27,7 @@ def main():
         Nacao = create_nacao_model()
 
         nacoes = Nacao.query.all()
-
+        add_nation()
         print("Aqui estão as nações:\n")
         for nacao in nacoes:
             print(nacao.nome)
