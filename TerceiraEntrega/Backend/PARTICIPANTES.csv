@@ -1,0 +1,101 @@
+numero_associado,nome,endereco,telefone,nivel_jogo,chave_nacao,id,arbitro
+,Magnus Carlsen,"123 Main Street, Anytown, Anystate, 12345",555-123-4567,0,Norway,,TRUE
+,Fabiano Caruana,"456 Elm Street, Anothercity, Anotherstate, 67890",555-987-6543,0,United States,,FALSE
+,Ding Liren,"789 Oak Avenue, Someville, Somestate, 54321",555-789-0123,0,China,,TRUE
+,Ian Nepomniachtchi,"321 Pine Road, Randomtown, Randomstate, 98765",555-456-7890,0,Russia,,TRUE
+,Levon Aronian,"987 Maple Lane, Testville, Teststate, 45678",555-321-0987,0,Armenia,,FALSE
+,Shakhriyar Mamedyarov,"654 Cedar Drive, Faketown, Fakestate, 23456",555-876-5432,0,Azerbaijan,,FALSE
+,Maxime Vachier-Lagrave,"876 Birch Court, Fictionville, Fictionstate, 76543",555-234-5678,0,France,,TRUE
+,Viswanathan Anand,"543 Walnut Street, Imaginarycity, Imaginarystate, 32109",555-890-1234,0,India,,TRUE
+,Wesley So,"210 Willow Avenue, Fantasytown, Fantasystate, 89012",555-567-8901,0,United States,,FALSE
+,Hikaru Nakamura,"135 Spruce Road, Makebelieveville, Makebelievestate, 56789",555-012-3456,0,United States,,TRUE
+,Teimour Radjabov,"246 Acacia Lane, Nonexistentcity, Nonexistentstate, 9876",555-678-9012,0,Azerbaijan,,TRUE
+,Anish Giri,"357 Sycamore Boulevard, Dummytown, Dummystate, 65432",555-345-6789,0,Netherlands,,FALSE
+,Vladimir Kramnik,"468 Juniper Drive, Phonyville, Phonystate, 43210",555-901-2345,0,Russia,,TRUE
+,Sergey Karjakin,"579 Magnolia Court, Boguscity, Bogusstate, 10987",555-456-7890,0,Russia,,FALSE
+,Pentala Harikrishna,"680 Redwood Lane, Pretendtown, Pretendstate, 98765",555-789-0123,0,India,,FALSE
+,Wei Yi,"791 Ash Street, Imitationville, Imitationstate, 87654",555-123-4567,0,China,,TRUE
+,Yu Yangyi,"802 Chestnut Avenue, Imaginarycity, Imaginarystate, 76543",555-987-6543,0,China,,FALSE
+,Dmitry Andreikin,"913 Poplar Road, Fantasytown, Fantasystate, 65432",555-789-0123,0,Russia,,TRUE
+,Radoslaw Wojtaszek,"124 Cypress Drive, Makebelieveville, Makebelievestate, 54321",555-456-7890,0,Poland,,FALSE
+,Veselin Topalov,"235 Willow Avenue, Nonexistentcity, Nonexistentstate, 43210",555-321-0987,0,Bulgaria,,TRUE
+,Boris Gelfand,"346 Sycamore Boulevard, Dummytown, Dummystate, 32109",555-876-5432,0,Israel,,FALSE
+,Arkadij Naiditsch,"457 Juniper Drive, Phonyville, Phonystate, 21098",555-234-5678,0,Azerbaijan,,TRUE
+,Etienne Bacrot,"568 Magnolia Court, Boguscity, Bogusstate, 10987",555-890-1234,0,France,,TRUE
+,David Navara,"679 Redwood Lane, Pretendtown, Pretendstate, 9876",555-567-8901,0,Czech Republic,,TRUE
+,Peter Svidler,"780 Ash Street, Imitationville, Imitationstate, 98765",555-012-3456,0,Russia,,FALSE
+,Vidit Gujrathi,"891 Chestnut Avenue, Imaginarycity, Imaginarystate, 87654",555-678-9012,0,India,,FALSE
+,Le Quang Liem,"902 Poplar Road, Fantasytown, Fantasystate, 76543",555-345-6789,0,Vietnam,,TRUE
+,Bu Xiangzhi,"113 Cypress Drive, Makebelieveville, Makebelievestate, 65432",555-901-2345,0,China,,TRUE
+,Michael Adams,"224 Willow Avenue, Nonexistentcity, Nonexistentstate, 54321",555-456-7890,0,England,,TRUE
+,Francisco Vallejo Pons,"335 Sycamore Boulevard, Dummytown, Dummystate, 43210",555-789-0123,0,Spain,,TRUE
+,Vladimir Fedoseev,"446 Juniper Drive, Phonyville, Phonystate, 32109",555-123-4567,0,Russia,,TRUE
+,Nikita Vitiugov,"557 Magnolia Court, Boguscity, Bogusstate, 21098",555-987-6543,0,Russia,,FALSE
+,Evgeny Tomashevsky,"668 Redwood Lane, Pretendtown, Pretendstate, 10987",555-789-0123,0,Russia,,FALSE
+,Sergey Movsesian,"779 Ash Street, Imitationville, Imitationstate, 9876",555-456-7890,0,Armenia,,TRUE
+,Jan-Krzysztof Duda,"880 Chestnut Avenue, Imaginarycity, Imaginarystate, 98765",555-321-0987,0,Poland,,TRUE
+,Nils Grandelius,"991 Poplar Road, Fantasytown, Fantasystate, 87654",555-876-5432,0,Sweden,,TRUE
+,Daniil Dubov,"102 Cypress Drive, Makebelieveville, Makebelievestate, 76543",555-234-5678,0,Russia,,TRUE
+,Ruslan Ponomariov,"213 Willow Avenue, Nonexistentcity, Nonexistentstate, 65432",555-890-1234,0,Ukraine,,FALSE
+,Anton Korobov,"324 Sycamore Boulevard, Dummytown, Dummystate, 54321",555-567-8901,0,Ukraine,,FALSE
+,Leinier Dominguez Perez,"435 Juniper Drive, Phonyville, Phonystate, 43210",555-012-3456,0,United States,,TRUE
+,Vassily Ivanchuk,"546 Magnolia Court, Boguscity, Bogusstate, 32109",555-678-9012,0,Ukraine,,TRUE
+,Vidit Santosh Gujrathi,"657 Redwood Lane, Pretendtown, Pretendstate, 21098",555-345-6789,0,India,,FALSE
+,Rauf Mamedov,"768 Ash Street, Imitationville, Imitationstate, 10987",555-901-2345,0,Azerbaijan,,FALSE
+,Ivan Saric,"879 Chestnut Avenue, Imaginarycity, Imaginarystate, 9876",555-456-7890,0,Croatia,,TRUE
+,Nils Studer,"980 Poplar Road, Fantasytown, Fantasystate, 98765",555-789-0123,0,Switzerland,,TRUE
+,Gata Kamsky,"101 Cypress Drive, Makebelieveville, Makebelievestate, 87654",555-123-4567,0,United States,,FALSE
+,Shakhriyar Mamedyarov,"212 Willow Avenue, Nonexistentcity, Nonexistentstate, 76543",555-987-6543,0,Azerbaijan,,FALSE
+,Pavel Eljanov,"323 Sycamore Boulevard, Dummytown, Dummystate, 65432",555-789-0123,0,Ukraine,,FALSE
+,Hou Yifan,"434 Juniper Drive, Phonyville, Phonystate, 54321",555-456-7890,0,China,,FALSE
+,Baskaran Adhiban,"545 Magnolia Court, Boguscity, Bogusstate, 43210",555-321-0987,0,India,,TRUE
+,Sam Shankland,"656 Redwood Lane, Pretendtown, Pretendstate, 32109",555-876-5432,0,United States,,TRUE
+,Lazaro Bruzon Batista,"767 Ash Street, Imitationville, Imitationstate, 21098",555-234-5678,0,Cuba,,TRUE
+,Leinier Dominguez,"878 Chestnut Avenue, Imaginarycity, Imaginarystate, 10987",555-890-1234,0,United States,,TRUE
+,Valentin Dragnev,"989 Poplar Road, Fantasytown, Fantasystate, 9876",555-567-8901,0,Austria,,FALSE
+,Jon Ludvig Hammer,"100 Cypress Drive, Makebelieveville, Makebelievestate, 98765",555-012-3456,0,Norway,,FALSE
+,Ferenc Berkes,"211 Willow Avenue, Nonexistentcity, Nonexistentstate, 87654",555-678-9012,0,Hungary,,TRUE
+,Yuriy Kuzubov,"322 Sycamore Boulevard, Dummytown, Dummystate, 76543",555-345-6789,0,Ukraine,,FALSE
+,Peter Leko,"433 Juniper Drive, Phonyville, Phonystate, 65432",555-901-2345,0,Hungary,,TRUE
+,Zoltan Almasi,"544 Magnolia Court, Boguscity, Bogusstate, 54321",555-456-7890,0,Hungary,,FALSE
+,Baadur Jobava,"655 Redwood Lane, Pretendtown, Pretendstate, 43210",555-789-0123,0,Georgia,,FALSE
+,Liviu-Dieter Nisipeanu,"766 Ash Street, Imitationville, Imitationstate, 32109",555-123-4567,0,Germany,,TRUE
+,Judit Polgar,"877 Chestnut Avenue, Imaginarycity, Imaginarystate, 21098",555-987-6543,0,Hungary,,TRUE
+,Saleh Salem,"988 Poplar Road, Fantasytown, Fantasystate, 10987",555-789-0123,0,United Arab Emirates,,FALSE
+,Alexei Shirov,"199 Cypress Drive, Makebelieveville, Makebelievestate, 9876",555-456-7890,0,Spain,,TRUE
+,Rinat Jumabayev,"210 Willow Avenue, Nonexistentcity, Nonexistentstate, 98765",555-321-0987,0,Kazakhstan,,FALSE
+,Gabriel Sargissian,"321 Sycamore Boulevard, Dummytown, Dummystate, 87654",555-876-5432,0,Armenia,,TRUE
+,Alexander Motylev,"432 Juniper Drive, Phonyville, Phonystate, 76543",555-234-5678,0,Russia,,TRUE
+,Tigran L Petrosian,"543 Magnolia Court, Boguscity, Bogusstate, 65432",555-890-1234,0,Armenia,,FALSE
+,Samuel Shankland,"654 Redwood Lane, Pretendtown, Pretendstate, 54321",555-567-8901,0,United States,,FALSE
+,Aleksandr Rakhmanov,"765 Ash Street, Imitationville, Imitationstate, 43210",555-012-3456,0,Russia,,TRUE
+,Surya Shekhar Ganguly,"876 Chestnut Avenue, Imaginarycity, Imaginarystate, 32109",555-678-9012,0,India,,TRUE
+,Romain Edouard,"987 Poplar Road, Fantasytown, Fantasystate, 21098",555-345-6789,0,France,,TRUE
+,Evgeniy Najer,"913 Poplar Road, Fantasytown, Fantasystate, 65432",555-901-2345,0,Russia,,FALSE
+,Li Chao,"124 Cypress Drive, Makebelieveville, Makebelievestate, 54321",555-456-7890,0,Bahrain,,TRUE
+,Le Quang Liem,"235 Willow Avenue, Nonexistentcity, Nonexistentstate, 43210",555-789-0123,0,Vietnam,,FALSE
+,Salem A.R. Saleh,"346 Sycamore Boulevard, Dummytown, Dummystate, 32109",555-123-4567,0,United Arab Emirates,,FALSE
+,Christian Bauer,"457 Juniper Drive, Phonyville, Phonystate, 21098",555-987-6543,0,France,,FALSE
+,Nikita Petrov,"568 Magnolia Court, Boguscity, Bogusstate, 10987",555-789-0123,0,Russia,,FALSE
+,Nidjat Mamedov,"679 Redwood Lane, Pretendtown, Pretendstate, 9876",555-456-7890,0,Azerbaijan,,TRUE
+,Mustafa Yilmaz,"780 Ash Street, Imitationville, Imitationstate, 98765",555-321-0987,0,Turkey,,TRUE
+,Vladimir Akopian,"891 Chestnut Avenue, Imaginarycity, Imaginarystate, 87654",555-876-5432,0,Armenia,,FALSE
+,S.P. Sethuraman,"902 Poplar Road, Fantasytown, Fantasystate, 76543",555-234-5678,0,India,,TRUE
+,Jorge Cori,"113 Cypress Drive, Makebelieveville, Makebelievestate, 65432",555-890-1234,0,Peru,,TRUE
+,Nguyen Ngoc Truong Son,"224 Willow Avenue, Nonexistentcity, Nonexistentstate, 54321",555-567-8901,0,Vietnam,,TRUE
+,Deep Sengupta,"335 Sycamore Boulevard, Dummytown, Dummystate, 43210",555-012-3456,0,India,,FALSE
+,Anatoly Karpov,"446 Juniper Drive, Phonyville, Phonystate, 32109",555-678-9012,0,Russia,,FALSE
+,Julio Ernesto Granda Zuniga,"557 Magnolia Court, Boguscity, Bogusstate, 21098",555-345-6789,0,Peru,,FALSE
+,Wei Yi,"668 Redwood Lane, Pretendtown, Pretendstate, 10987",555-901-2345,0,China,,TRUE
+,Denis Khismatullin,"779 Ash Street, Imitationville, Imitationstate, 9876",555-456-7890,0,Russia,,TRUE
+,Amin Bassem,"880 Chestnut Avenue, Imaginarycity, Imaginarystate, 98765",555-789-0123,0,Egypt,,FALSE
+,Dariusz Swiercz,"991 Poplar Road, Fantasytown, Fantasystate, 87654",555-123-4567,0,Poland,,TRUE
+,Pentala Harikrishna,"102 Cypress Drive, Makebelieveville, Makebelievestate, 76543",555-987-6543,0,India,,FALSE
+,Aleksandr Predke,"213 Willow Avenue, Nonexistentcity, Nonexistentstate, 65432",555-789-0123,0,Russia,,TRUE
+,Ivan Cheparinov,"324 Sycamore Boulevard, Dummytown, Dummystate, 54321",555-456-7890,0,Bulgaria,,TRUE
+,Le Quang Liem,"435 Juniper Drive, Phonyville, Phonystate, 43210",555-321-0987,0,Vietnam,,FALSE
+,Sergei Zhigalko,"546 Magnolia Court, Boguscity, Bogusstate, 32109",555-876-5432,0,Belarus,,FALSE
+,Sanan Sjugirov,"657 Redwood Lane, Pretendtown, Pretendstate, 21098",555-234-5678,0,Russia,,TRUE
+,Liem Quang Le,"768 Ash Street, Imitationville, Imitationstate, 10987",555-890-1234,0,Vietnam,,TRUE
+,Karen Grigoryan,"991 Poplar Road, Fantasytown, Fantasystate, 87654",555-012-3456,0,Armenia,,TRUE
+,Alexandr Fier,"102 Cypress Drive, Makebelieveville, Makebelievestate, 76543",555-678-9012,0,Brazil,,FALSE
