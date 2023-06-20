@@ -23,14 +23,14 @@ def create_nacao_model():
     return Nacao
 
 def create_hospedagem_model():
-    HOSPEGADEM = db.Table('HOSPEGADEM', db.metadata, autoload=True, autoload_with=db.engine)
+    HOSPEDAGEM = db.Table('HOSPEDAGEM', db.metadata, autoload=True, autoload_with=db.engine)
 
-    class Hopedagem(db.Model):
-        __table__ = HOSPEGADEM
+    class Hospedagem(db.Model):
+        __table__ = HOSPEDAGEM
 
         # Define any additional columns or methods here
 
-    return Hopedagem
+    return Hospedagem
 
 def create_jogadas_model():
     JOGADAS = db.Table('JOGADAS', db.metadata, autoload=True, autoload_with=db.engine)
