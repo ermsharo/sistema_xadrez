@@ -23,27 +23,6 @@ def hello_world():
     return "Hello, World!"
 
 
-def add_hospedagem(nome, cod_postal, endereco, nacao):
-    Hospedagem = create_hospedagem_model()
-    novo_hospedagem = Hospedagem(
-        cod_postal=cod_postal,
-        nome=nome,
-        endereco=endereco,
-        nacao=nacao,
-    )
-    db.session.add(novo_hospedagem)
-    db.session.commit()
-
-
-def add_based_in_csv_hospedagem():
-    df = pd.read_csv("HOSPEDAGEM.csv")
-    for index, row in df.iterrows():
-        # Access the values of each column in the current row
-        nome = row["nome"]
-        cod_postal = row["cod_postal"]
-        endereco = row["endereco"]
-        nacao = row["nacao"]
-        add_hospedagem(nome, cod_postal, endereco, nacao)
 
 
 def findIdByCountry(nation):
