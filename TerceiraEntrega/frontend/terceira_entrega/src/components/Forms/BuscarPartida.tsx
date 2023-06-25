@@ -6,6 +6,7 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Search from "./Search";
 import GamesView from "../../pages/games-view";
+import GamesByCountry from "../../pages/games-by-county";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -65,13 +66,13 @@ export default function BuscarPartida() {
         <Search />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <GamesView/>
+        <GamesView />
       </TabPanel>
       <TabPanel value={value} index={2}>
-      Jogos por jogadas
+        Jogos por jogadas
       </TabPanel>
       <TabPanel value={value} index={3}>
-      Jogadores por paises
+        <GamesByCountry />
       </TabPanel>
     </Box>
   );

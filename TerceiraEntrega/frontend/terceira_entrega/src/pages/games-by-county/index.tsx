@@ -2,16 +2,16 @@ import { useState } from "react";
 
 
 
-function GamesView() {
+function GamesByCountry() {
 
 
   return (
-    <div className="window-body">
+    <div >
   
-    
+    Aqui esta o nosso grafico de barras
       
     </div>
   );
 }
 
-export default GamesView;
+export default GamesByCountry;

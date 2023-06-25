@@ -10,6 +10,7 @@ from models import (
 )
 
 from search_parameters import my_parameters
+from players_by_country import players_by_country
 import pandas as pd
 import random
 
@@ -18,11 +19,17 @@ app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///BD_2.db"
 db.init_app(app)
 app.register_blueprint(my_parameters)
+app.register_blueprint(players_by_country)
 
 # Define a route and its corresponding handler
 @app.route("/")
 def hello_world():
     return "Hello, World!"
+
+
+@app.errorhandler(500)
+def internal_server_error(error):
+    return f"Error {error} ", 500
 
 
 def pegar_campeonatos():
@@ -49,7 +56,7 @@ def main():
         # add_based_in_csv_hospedagem()
         # for nacao in nacoes:
         #     print(nacao.nome)
-        pegar_campeonatos()
+        # pegar_campeonatos()
         app.run()
 
 
