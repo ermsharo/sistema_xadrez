@@ -31,14 +31,14 @@ const useStyles = makeStyles({
   },
 });
 
-interface Column {
-  key: string;
+interface Column<T> {
+  key: keyof T;
   label: string;
 }
 
 interface Props<T> {
   data: T[];
-  columns: Column[];
+  columns: Column<T>[];
   searchKey: keyof T;
 }
 
@@ -51,8 +51,7 @@ function TableWithSearch<T>({ data, columns, searchKey }: Props<T>) {
   };
 
   const filteredData = data.filter((item) =>
-    item[searchKey]
-      .toString()
+    String(item[searchKey])
       .toLowerCase()
       .includes(searchTerm.toLowerCase())
   );
@@ -72,7 +71,7 @@ function TableWithSearch<T>({ data, columns, searchKey }: Props<T>) {
             <TableRow>
               {columns.map((column) => (
                 <TableCell
-                  key={column.key}
+                  key={column.key as string}
                   className={classes.tableHeaderCell}
                 >
                   {column.label}
@@ -84,8 +83,8 @@ function TableWithSearch<T>({ data, columns, searchKey }: Props<T>) {
             {filteredData.map((item, index) => (
               <TableRow key={index}>
                 {columns.map((column) => (
-                  <TableCell key={column.key}>
-                    {item[column.key]}
+                  <TableCell key={column.key as string}>
+                    {String(item[column.key])}
                   </TableCell>
                 ))}
               </TableRow>
