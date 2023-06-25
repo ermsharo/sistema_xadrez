@@ -5,6 +5,7 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Search from "./Search";
+import GamesView from "../../pages/games-view";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -56,17 +57,21 @@ export default function BuscarPartida() {
         >
           <Tab label="Buscar partida" {...a11yProps(0)} />
           <Tab label="Jogos" {...a11yProps(1)} />
-          <Tab label="Estatisticas" {...a11yProps(2)} />
+          <Tab label="Jogos por jogadas" {...a11yProps(2)} />
+          <Tab label="Jogadores por paises" {...a11yProps(3)} />
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
         <Search />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Jogos
+        <GamesView/>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Estatisticas
+      Jogos por jogadas
+      </TabPanel>
+      <TabPanel value={value} index={3}>
+      Jogadores por paises
       </TabPanel>
     </Box>
   );
