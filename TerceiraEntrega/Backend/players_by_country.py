@@ -72,7 +72,15 @@ def get_players_by_country():
         for d in record_list
     ]
 
-    players_by_country_data = {'count_by_country': count_nome_nacao(new_record_list), 'relative_data':new_record_list }
+    counter_nome_nacao = count_nome_nacao(new_record_list)
+    sorted_data = sorted(counter_nome_nacao.items(), key=lambda x: x[1], reverse=True)
+
+    # Generate the transformed object
+    result = [{"name": country, "value": value} for country, value in sorted_data]
+
+
+
+    players_by_country_data = {'count_by_country': result, 'relative_data':new_record_list }
     # print(json.dumps(new_record_list))
     return json.dumps(players_by_country_data)
 

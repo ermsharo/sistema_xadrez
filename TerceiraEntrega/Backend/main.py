@@ -13,6 +13,7 @@ from search_parameters import my_parameters
 from players_by_country import players_by_country
 import pandas as pd
 import random
+from flask_cors import CORS
 
 # Create a Flask application
 app = Flask(__name__)
@@ -20,6 +21,7 @@ app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///BD_2.db"
 db.init_app(app)
 app.register_blueprint(my_parameters)
 app.register_blueprint(players_by_country)
+CORS(app)
 
 # Define a route and its corresponding handler
 @app.route("/")
