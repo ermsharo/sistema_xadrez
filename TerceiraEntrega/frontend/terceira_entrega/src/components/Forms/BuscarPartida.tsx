@@ -56,7 +56,7 @@ export default function BuscarPartida() {
           onChange={handleChange}
           aria-label="basic tabs example"
         >
-          <Tab label="Buscar partida" {...a11yProps(0)} />
+          <Tab label="Programação dos jogos" {...a11yProps(0)} />
           <Tab label="Jogos" {...a11yProps(1)} />
           <Tab label="Jogos por jogadas" {...a11yProps(2)} />
           <Tab label="Jogadores por paises" {...a11yProps(3)} />
