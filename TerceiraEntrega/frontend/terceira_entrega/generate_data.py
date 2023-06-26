@@ -5,7 +5,7 @@ from datetime import datetime, timedelta
 
 def simulate_championship(player_names,arbrito,chave_campeonato):
     num_players = len(player_names)
-    num_games = 5
+    num_games = 10
 
     # Shuffle the player names to randomize the pairings
     shuffle(player_names)
