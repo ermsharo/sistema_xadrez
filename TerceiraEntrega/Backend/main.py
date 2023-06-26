@@ -2,6 +2,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from models import (
     create_participantes_campeonato_model,
+    create_registro_hospedagem_model,
     db,
     create_jogada_model,
     create_nacao_model,
@@ -52,31 +53,32 @@ def generate_non_concurrent_intervals(n, start_date, end_date):
     return intervals
 
 
-def subcribe_player_hotel(person, function, championship, nation):
-    Participantes_campeonato = create_participantes_campeonato_model()
-    novo_participante_campeonato = Participantes_campeonato(
-        funcao=function,
-        chave_nacao=nation,
-        chave_campeonato=championship,
-        chave_participante=person,
+def subcribe_player_hotel(champeonato_id, start, end, hospedagem_id, participante):
+    Registro_hospedagem = create_registro_hospedagem_model()
+    novo_registro_hospedagem = Registro_hospedagem(
+        chave_campeonato=champeonato_id,
+        momento_entrada=start,
+        momento_saida=end,
+        chave_hospedagem = hospedagem_id,
+        chave_participante=participante,
     )
-    db.session.add(novo_participante_campeonato)
+    db.session.add(novo_registro_hospedagem)
     db.session.commit()
 
 
+def create_salao_model(champeonato_id, start, end, hospedagem_id, participante):
+    Registro_hospedagem = create_registro_hospedagem_model()
+    novo_registro_hospedagem = Registro_hospedagem(
+        chave_campeonato=champeonato_id,
+        momento_entrada=start,
+        momento_saida=end,
+        chave_hospedagem = hospedagem_id,
+        chave_participante=participante,
+    )
+    db.session.add(novo_registro_hospedagem)
+    db.session.commit()
 
-def subcribe_player_hotel(n, start_date, end_date):
-    intervals = []
-    start_moment = start_date
 
-    for _ in range(n):
-        end_moment = start_moment + timedelta(minutes=30)
-        if end_moment > end_date:
-            break
-        intervals.append({"start_moment": start_moment, "end_moment": end_moment})
-        start_moment = end_moment
-
-    return intervals
 
 def subcribe_salao(n, start_date, end_date):
     intervals = []
