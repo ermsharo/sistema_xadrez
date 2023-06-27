@@ -87,17 +87,14 @@ function GamesByRounds() {
   if (data) {
     console.log("Data here -> ", data);
 
-
-    // const convertedObj: Partida_Normalizada = convertObject(obj);
     const modifiedObj = data.map(convertObject);
-    console.log("Here stay ->",modifiedObj);
+    console.log("Here stay ->", modifiedObj);
 
     return (
       <div>
         <div className="App">
           <h1>Jogadores por pais</h1>
           {/* <BarPlot data={data.count_by_country} />
-
           <Table
             data={data.count_by_country}
             columns={columns}

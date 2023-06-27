@@ -1,6 +1,5 @@
-
-import { useState, useEffect } from 'react';
-import axios, { AxiosResponse, AxiosError } from 'axios';
+import { useState, useEffect } from "react";
+import axios, { AxiosResponse, AxiosError } from "axios";
 
 interface UseAxiosProps<T> {
   url: string;
@@ -13,11 +12,9 @@ interface UseAxiosState<T> {
   isLoading: boolean;
 }
 
-
-
-
-
-export const DefaultRequest = <T>({ url }: UseAxiosProps<T>): UseAxiosState<T> => {
+export const DefaultRequest = <T>({
+  url,
+}: UseAxiosProps<T>): UseAxiosState<T> => {
   const [data, setData] = useState<T | null>(null);
   const [error, setError] = useState<AxiosError<T> | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -36,9 +33,8 @@ export const DefaultRequest = <T>({ url }: UseAxiosProps<T>): UseAxiosState<T> =
 
   useEffect(() => {
     fetchData();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [url]);
-
 
   useEffect(() => {
     setIsLoading(true);
@@ -46,4 +42,3 @@ export const DefaultRequest = <T>({ url }: UseAxiosProps<T>): UseAxiosState<T> =
 
   return { data, error, isLoading };
 };
-
