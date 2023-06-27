@@ -118,9 +118,9 @@ def create_registro_hospedagem_model():
 def create_salao_model():
     SALAO = db.Table('SALAO', db.metadata, autoload=True, autoload_with=db.engine)
 
-    class Salao(db.Model):
+    class Salao_model(db.Model):
         __table__ = SALAO
 
         # Define any additional columns or methods here
 
-    return Salao
+    return Salao_model
