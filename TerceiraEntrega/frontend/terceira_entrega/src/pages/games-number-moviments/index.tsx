@@ -89,13 +89,13 @@ function GamesNumberMoviments() {
 
 
     // const convertedObj: Partida_Normalizada = convertObject(obj);
-    const modifiedObj = data.map(convertObject);
-    console.log("Here stay ->",modifiedObj);
+    const partidas_noramalizadas = data.map(convertObject);
+    console.log("Here stay ->",partidas_noramalizadas);
 
     return (
       <div>
         <div className="App">
-          <h1>Jogadores por pais</h1>
+          <h1>Jogos por numero de jogadas</h1>
           {/* <BarPlot data={data.count_by_country} />
 
           <Table

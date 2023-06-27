@@ -24,6 +24,9 @@ function GamesByCountry() {
 
       // Add more columns as needed
     ];
+
+
+    console.log("format plot Data", data.count_by_country);
     return (
       <div>
         <div className="App">

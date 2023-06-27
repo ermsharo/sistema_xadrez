@@ -1,13 +1,13 @@
 import React from 'react';
 import { ResponsiveContainer, BarChart, XAxis, YAxis, Bar, Tooltip } from 'recharts';
 
-interface BarData {
-  name: string;
-  value: number;
-}
+// interface BarData {
+//   name: string;
+//   value: number;
+// }
 
 interface BarPlotProps {
-  data: BarData[];
+  data: any[];
 }
 
 const BarPlot: React.FC<BarPlotProps> = ({ data }) => {
