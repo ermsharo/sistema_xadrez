@@ -66,10 +66,10 @@ export default function BuscarPartida() {
         <Search />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <GamesView />
+       Aqui esta
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Jogos por jogadas
+      <GamesView />
       </TabPanel>
       <TabPanel value={value} index={3}>
         <GamesByCountry />
