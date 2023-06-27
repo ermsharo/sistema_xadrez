@@ -28,6 +28,7 @@ function GamesByCountry() {
       <div>
         <div className="App">
           <h1>Jogadores por pais</h1>
+        
           <BarPlot data={data.count_by_country} />
 
           <Table

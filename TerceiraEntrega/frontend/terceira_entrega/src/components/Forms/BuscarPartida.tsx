@@ -58,23 +58,24 @@ export default function BuscarPartida() {
           aria-label="basic tabs example"
         >
           <Tab label="Programação dos jogos" {...a11yProps(0)} />
-          <Tab label="Jogos" {...a11yProps(1)} />
+          <Tab label="Jogos por parametros" {...a11yProps(1)} />
           <Tab label="Jogos por jogadas" {...a11yProps(2)} />
           <Tab label="Jogadores por paises" {...a11yProps(3)} />
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        <Search />
+        <GamesView />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Aqui esta
+        <Search />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <GamesByRounds/>
+        <GamesByRounds />
       </TabPanel>
       <TabPanel value={value} index={3}>
-        <>      <GamesByCountry/></>
-  
+        <>
+          <GamesByCountry />
+        </>
       </TabPanel>
     </Box>
   );

@@ -54,6 +54,7 @@ interface Partida_Normalizada {
   endereco: string;
   nacao: string;
   numero_jogadas: number;
+  match_name: string;
 }
 
 function convertObject(obj: Partida): Partida_Normalizada {
@@ -71,11 +72,12 @@ function convertObject(obj: Partida): Partida_Normalizada {
     endereco: obj.salao.hospedagem.endereco,
     nacao: obj.salao.hospedagem.nacao,
     numero_jogadas: obj.numero_jogadas,
+    match_name: `${obj.jogador_primario_nome} vs ${obj.jogador_primario_nome} - ${obj.campeonato}`,
   };
   return convertedObj;
 }
 
-function GamesByRounds() {
+function GamesView() {
   const { data, isLoading } = DefaultRequest<any>({
     url: `http://127.0.0.1:5000/programacao`,
   });
@@ -87,23 +89,82 @@ function GamesByRounds() {
   if (data) {
     console.log("Data here -> ", data);
 
-    const modifiedObj = data.map(convertObject);
-    console.log("Here stay ->", modifiedObj);
+    // const convertedObj: Partida_Normalizada = convertObject(obj);
+    const partidas_noramalizadas = data.map(convertObject);
+    console.log("Here stay ->", partidas_noramalizadas);
 
+    const columns = [
+      {
+        key: "match_name" as keyof (typeof data.count_by_country)[0],
+        label: "jogo",
+      },
+      {
+        key: "jogador_primario_nome" as keyof (typeof data.count_by_country)[0],
+        label: "Primeiro jogador",
+      },
+      {
+        key: "jogador_secundario_nome" as keyof (typeof data.count_by_country)[0],
+        label: "Segundo jogador",
+      },
+      {
+        key: "arbitro_nome" as keyof (typeof data.count_by_country)[0],
+        label: "Arbitro",
+      },
+      {
+        key: "vencedor" as keyof (typeof data.count_by_country)[0],
+        label: "Vencedor",
+      },
+      {
+        key: "data_inicio" as keyof (typeof data.count_by_country)[0],
+        label: "Hotel",
+      },
+      {
+        key: "salao_nome" as keyof (typeof data.count_by_country)[0],
+        label: "Salao",
+      },
+      {
+        key: "endereco" as keyof (typeof data.count_by_country)[0],
+        label: "Endereco",
+      },
+      {
+        key: "nacao" as keyof (typeof data.count_by_country)[0],
+        label: "Pais",
+      },
+      {
+        key: "data_inicio" as keyof (typeof data.count_by_country)[0],
+        label: "Inicio",
+      },
+      {
+        key: "data_fim" as keyof (typeof data.count_by_country)[0],
+        label: "Fim",
+      },
+      {
+        key: "numero_jogadas" as keyof (typeof data.count_by_country)[0],
+        label: "numero de jogadas",
+      },
+
+      // Add more columns as needed
+    ];
+
+    partidas_noramalizadas.sort(
+      (a: { numero_jogadas: number }, b: { numero_jogadas: number }) => {
+        return a.numero_jogadas - b.numero_jogadas;
+      }
+    );
     return (
       <div>
         <div className="App">
-          <h1>Jogadores por pais</h1>
-          {/* <BarPlot data={data.count_by_country} />
+          <h1>Programação dos jogos</h1>
+
           <Table
-            data={data.count_by_country}
+            data={partidas_noramalizadas}
             columns={columns}
             searchKey="name"
-          /> */}
+          />
         </div>
       </div>
     );
   }
 }
 
-export default GamesByRounds;
+export default GamesView;
