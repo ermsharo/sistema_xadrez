@@ -54,6 +54,7 @@ interface Partida_Normalizada {
   endereco: string;
   nacao: string;
   numero_jogadas: number;
+  match_name: string;
 }
 
 function convertObject(obj: Partida): Partida_Normalizada {
@@ -71,6 +72,7 @@ function convertObject(obj: Partida): Partida_Normalizada {
     endereco: obj.salao.hospedagem.endereco,
     nacao: obj.salao.hospedagem.nacao,
     numero_jogadas: obj.numero_jogadas,
+    match_name: `${obj.jogador_primario_nome} vs ${obj.jogador_primario_nome} - ${obj.campeonato}`,
   };
   return convertedObj;
 }
@@ -87,22 +89,37 @@ function GamesNumberMoviments() {
   if (data) {
     console.log("Data here -> ", data);
 
-
     // const convertedObj: Partida_Normalizada = convertObject(obj);
     const partidas_noramalizadas = data.map(convertObject);
-    console.log("Here stay ->",partidas_noramalizadas);
+    console.log("Here stay ->", partidas_noramalizadas);
 
+
+    const columns = [
+      { key: "match_name" as keyof (typeof data.count_by_country[0]), label: "jogo" },
+      { key: "data_inicio" as keyof (typeof data.count_by_country[0]), label: "Inicio" },
+      { key: "data_fim" as keyof (typeof data.count_by_country[0]), label: "Fim" },
+      {
+        key: "numero_jogadas" as keyof (typeof data.count_by_country[0]),
+        label: "numero de jogadas",
+      },
+
+      // Add more columns as needed
+    ];
+
+    partidas_noramalizadas.sort((a: { numero_jogadas: number; }, b: { numero_jogadas: number; }) => {
+      return a.numero_jogadas - b.numero_jogadas;
+  });
     return (
       <div>
         <div className="App">
           <h1>Jogos por numero de jogadas</h1>
-          {/* <BarPlot data={data.count_by_country} />
+          <BarPlot data={partidas_noramalizadas} />
 
           <Table
-            data={data.count_by_country}
+            data={partidas_noramalizadas}
             columns={columns}
             searchKey="name"
-          /> */}
+          />
         </div>
       </div>
     );
