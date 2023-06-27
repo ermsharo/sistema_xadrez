@@ -17,6 +17,7 @@ from models import (
 import csv
 from search_parameters import my_parameters
 from players_by_country import players_by_country
+from programacao import programacao
 import pandas as pd
 from flask_cors import CORS
 from random import randint, random
@@ -30,10 +31,10 @@ app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///BD_2.db"
 db.init_app(app)
 app.register_blueprint(my_parameters)
 app.register_blueprint(players_by_country)
+app.register_blueprint(programacao)
 CORS(app)
 
 
-# Define a route and its corresponding handler
 @app.route("/")
 def hello_world():
     return "Hello, World!"
@@ -79,19 +80,6 @@ def subcribe_player_hotel(champeonato_id, start, end, hospedagem_id, participant
     )
     db.session.add(novo_registro_hospedagem)
     db.session.commit()
-
-
-# def create_salao_model(champeonato_id, start, end, hospedagem_id, participante):
-#     Registro_hospedagem = create_registro_hospedagem_model()
-#     novo_registro_hospedagem = Registro_hospedagem(
-#         chave_campeonato=champeonato_id,
-#         momento_entrada=start,
-#         momento_saida=end,
-#         chave_hospedagem=hospedagem_id,
-#         chave_participante=participante,
-#     )
-#     db.session.add(novo_registro_hospedagem)
-#     db.session.commit()
 
 
 def subcribe_salao(n, start_date, end_date):
@@ -200,8 +188,22 @@ def pegar_campeonatos():
     # print("Campeonato", Campeonato_records)
     record_list = [campeonato.__dict__ for campeonato in Campeonato_records]
     print("Aqui esta", record_list)
+    new_record_list = [{"id": d["id"], "nome": d["nome"]} for d in record_list]
+    print(" \n \n  new rocrd list", new_record_list)
+    return new_record_list
+
+
+def pegar_paises():
+    Paises = create_nacao_model()
+    Paises_records = Paises.query.all()
+    # print("Campeonato", Campeonato_records)
+    record_list = [paises.__dict__ for paises in Paises_records]
+    print("Aqui esta", record_list)
     new_record_list = [
-        {"id": d["id"], "nome": d["nome"], "data_inicio": d["data_inicio"]}
+        {
+            "id": d["id"],
+            "nome": d["nome"],
+        }
         for d in record_list
     ]
     print(" \n \n  new rocrd list", new_record_list)
@@ -388,17 +390,32 @@ def subscribe_game(
     return new_record_id
 
 
+def get_campeonato():
+    print("Campeonaro")
+
+
 def pegar_partidas():
     Partida = create_partida_model()
     partidas_records = Partida.query.all()
     participantes = pegar_participantes()
+    paises = pegar_paises()
+    # print(" \n \n Paises ", paises)
+    saloes = pegar_saloes()
+    print(" \n \n Saloes -> ", saloes)
+
+    campeonatos = pegar_campeonatos()
+    # print("\n \n Campeonato", campeonatos)
     record_list = [partida.__dict__ for partida in partidas_records]
     new_record_list = [
         {
             "jogador_primario": d["jogador_primario"],
             "jogador_secundario": d["jogador_secundario"],
-            "jogador_primario_nome": query_participantes(participantes,d["jogador_primario"]),
-            "jogador_secundario_nome": query_participantes(participantes,d["jogador_secundario"]),
+            "jogador_primario_nome": query_participantes(
+                participantes, d["jogador_primario"]
+            ),
+            "jogador_secundario_nome": query_participantes(
+                participantes, d["jogador_secundario"]
+            ),
             "arbitro": d["arbitro"],
             "pecas_pretas": d["pecas_pretas"],
             "pecas_brancas": d["pecas_brancas"],
@@ -406,14 +423,14 @@ def pegar_partidas():
             "data_fim": d["data_fim"],
             "vencedor": d["vencedor"],
             "chave_campeonato": d["chave_campeonato"],
+            "campeonato": query_campeonato(campeonatos, d["chave_campeonato"]),
             "chave_salao": d["chave_salao"],
+            "salao": query_salao(saloes, d["chave_salao"]),
             "numero_jogadas": d["numero_jogadas"],
         }
         for d in record_list
     ]
     print("Partida records:", new_record_list)
-
-   
 
 
 def pegar_participantes():
@@ -424,6 +441,58 @@ def pegar_participantes():
     new_record_list = [{"id": d["id"], "nome": d["nome"]} for d in record_list]
     print("new record list", new_record_list)
     return new_record_list
+
+
+def pegar_saloes():
+    Salao = create_salao_model()
+    Salao_records = Salao.query.all()
+    hospedagens = pegar_hospedagens()
+    print("Partida records:", Salao_records)
+    record_list = [participantes.__dict__ for participantes in Salao_records]
+    new_record_list = [
+        {
+            "id": d["id"],
+            "capacidade": d["capacidade"],
+            "radio": d["radio"],
+            "televisao": d["televisao"],
+            "video": d["video"],
+            "internet": d["internet"],
+            "inicio_uso": d["inicio_uso"],
+            "fim_uso": d["fim_uso"],
+            "nome": d["nome"],
+            "chave_hospedagem": d["chave_hospedagem"],
+            "hospedagem": query_hospedagem(hospedagens, d["chave_hospedagem"]),
+        }
+        for d in record_list
+    ]
+    print("new record list", new_record_list)
+    return new_record_list
+
+
+def pegar_hospedagens():
+    Hospedagem = create_hospedagem_model()
+    Hospedagem_records = Hospedagem.query.all()
+    record_list = [hospedagem.__dict__ for hospedagem in Hospedagem_records]
+    paises = pegar_paises()
+    new_record_list = [
+        {
+            "id": d["id"],
+            "nome": d["nome"],
+            "cod_postal": d["cod_postal"],
+            "endereco": d["endereco"],
+            "nacao_id": d["nacao"],
+            "nacao": query_pais(paises, d["nacao"]),
+        }
+        for d in record_list
+    ]
+    return new_record_list
+
+
+def query_salao(saloes, id):
+    for record in saloes:
+        if record["id"] == id:
+            return record
+    return None
 
 
 def query_participantes(participantes, id):
@@ -439,22 +508,25 @@ def query_pais(pais, id):
             return record["nome"]
     return None
 
+
+def query_campeonato(campeonato, id):
+    for record in campeonato:
+        if record["id"] == id:
+            return record["nome"]
+    return None
+
+
+def query_hospedagem(hospedagem, id):
+    for record in hospedagem:
+        if record["id"] == id:
+            return record
+    return None
+
+
 def main():
     # Usage example:
     with app.app_context():
-        # add_based_in_csv_hospedagem()
-        # for nacao in nacoes:
-        #     print(nacao.nome)
-        # get_matches(2, "2023-06-06")
-        # campeonatos = pegar_campeonatos()
-        # for campeonato in campeonatos:
-        #     print("\n ", campeonato["nome"])
-        #     print("\n ", campeonato["id"])
-        #     print("\n ", campeonato["data_inicio"])
-        #     get_matches(campeonato["id"],campeonato["data_inicio"])
-
         pegar_partidas()
-       
 
     app.run()
 
