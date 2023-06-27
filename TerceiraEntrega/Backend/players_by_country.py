@@ -10,6 +10,12 @@ from models import (
 players_by_country = Blueprint("players", __name__)
 
 
+def pegar_paises():
+    Paises = create_nacao_model()
+    paises_records = Paises.query.all()
+    record_list = [paises.__dict__ for paises in paises_records]
+    new_record_list = [{"id": d["id"], "nome": d["nome"]} for d in record_list]
+    return new_record_list
 
 
 def filterCountryByID(countries, id):

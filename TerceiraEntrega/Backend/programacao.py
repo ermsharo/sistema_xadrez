@@ -54,6 +54,9 @@ def pegar_partidas():
                 participantes, d["jogador_secundario"]
             ),
             "arbitro": d["arbitro"],
+            "arbitro_nome": query_participantes(
+                participantes, d["arbitro"]
+            ),
             "pecas_pretas": d["pecas_pretas"],
             "pecas_brancas": d["pecas_brancas"],
             "data_inicio": d["data_inicio"],

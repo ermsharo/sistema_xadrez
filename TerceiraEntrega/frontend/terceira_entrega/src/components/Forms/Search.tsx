@@ -1,46 +1,44 @@
-import * as React from "react";
-import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
-import Locais from "./Locais";
-import Hotel from "./Hotel";
+import BarPlot from "../../components/BarChart";
+import { DefaultRequest } from "../../services/requests";
+import Table from "../../components/Table";
 
-function Bar() {
-  return (
-    <Box
-      sx={{
-        height: 24,
-      }}
-    />
-  );
-}
+function Search() {
 
-export default function Search() {
-  return (
-    <Box component="form" noValidate autoComplete="off">
+  const { data, isLoading } = DefaultRequest<any>({
+    url: `http://127.0.0.1:5000/programacao`,
+  });
+
+  if (isLoading) {
+    return <>loading</>;
+  }
+
+  if (data) {
+    console.log("Data", data);
+
+    const columns = [
+      { key: "name" as keyof (typeof data.count_by_country[0]), label: "Pais" },
+      {
+        key: "value" as keyof (typeof data.count_by_country[0]),
+        label: "Quantidade",
+      },
+
+      // Add more columns as needed
+    ];
+    return (
       <div>
-        <Bar />
-        <TextField fullWidth id="outlined" label="Jogador" />
-        <Bar />
-        <TextField fullWidth id="outlined" label="Arbitro" />
-        <Bar />
-        <TextField
-          fullWidth
-          id="outlined"
-          label="Local"
-          defaultValue="Hello World"
-        />
-        <Bar />
-        <TextField
-          fullWidth
-          id="outlined"
-          label="Required"
-          defaultValue="Hello World"
-        />
-        <Bar />
-        <Locais />
-        <Bar />
-        <Hotel />
+        <div className="App">
+          <h1>Programacao dos jogos</h1>
+          {/* <BarPlot data={data.count_by_country} /> */}
+
+          {/* <Table
+            data={data.count_by_country}
+            columns={columns}
+            searchKey="name"
+          /> */}
+        </div>
       </div>
-    </Box>
-  );
+    );
+  }
 }
+
+export default Search;
