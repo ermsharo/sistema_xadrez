@@ -1,11 +1,9 @@
-import BarPlot from "../../components/BarChart";
 import { DefaultRequest } from "../../services/requests";
 import Table from "../../components/Table";
 import React, { useState } from "react";
 import {
   Select,
   MenuItem,
-  FormControl,
   InputLabel,
   SelectChangeEvent,
 } from "@mui/material";

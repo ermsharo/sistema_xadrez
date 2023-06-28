@@ -1,20 +1,7 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import and_
-from models import (
-    create_jogadas_model,
-    create_participantes_campeonato_model,
-    create_partida_model,
-    create_registro_hospedagem_model,
-    create_salao_model,
-    db,
-    create_jogada_model,
-    create_nacao_model,
-    create_participantes_model,
-    create_campeonato_model,
-    create_hospedagem_model,
-)
-import csv
+
 from search_parameters import my_parameters
 from players_by_country import players_by_country
 from programacao import programacao
