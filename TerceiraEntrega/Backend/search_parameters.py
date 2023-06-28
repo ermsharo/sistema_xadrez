@@ -31,8 +31,6 @@ def pegar_hoteis():
 @my_parameters.route('/hotel')
 def hotel_route():
     # Create your object
-    my_object = {'name': 'John', 'age': 25}
-
     # Return the object as JSON response
     return pegar_hoteis()
 
