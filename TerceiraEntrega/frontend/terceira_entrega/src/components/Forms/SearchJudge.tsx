@@ -1,14 +1,9 @@
 import { DefaultRequest } from "../../services/requests";
 import Table from "../../components/Table";
 import React, { useState } from "react";
-import {
-  Select,
-  MenuItem,
-  InputLabel,
-  SelectChangeEvent,
-} from "@mui/material";
+import { Select, MenuItem, InputLabel, SelectChangeEvent } from "@mui/material";
 import styled from "styled-components";
-import { HotelData , Players ,Judges} from "./selectData";
+import { HotelData, Players, Judges } from "./selectData";
 
 interface Partida {
   jogador_primario: number;
@@ -106,36 +101,19 @@ const StyledFormControl = styled.div`
 
 const StyledInputLabel = styled(InputLabel)``;
 
-function GamesView() {
+function SearchJudge() {
+  const [parameter, setParameter] = useState("1");
+
   const { data, isLoading } = DefaultRequest<any>({
-    url: `http://127.0.0.1:5000/programacao`,
+    url: `http://127.0.0.1:5000/programacao_parametros/hospedagem/${parameter}`,
   });
 
   const [selection1, setSelection1] = useState("");
   const [selection2, setSelection2] = useState("");
   const [selection3, setSelection3] = useState("");
 
-  const handleSelection1Change = (event: {
-    target: { value: React.SetStateAction<string> };
-  }) => {
-    setSelection1(event.target.value);
-  };
-
-  const handleSelection2Change = (event: {
-    target: { value: React.SetStateAction<string> };
-  }) => {
-    setSelection2(event.target.value);
-  };
-
-  const handleSelection3Change = (event: {
-    target: { value: React.SetStateAction<string> };
-  }) => {
-    setSelection3(event.target.value);
-  };
-
-  const [age, setAge] = useState("todos");
   const handleChange = (event: SelectChangeEvent) => {
-    setAge(event.target.value);
+    setParameter(event.target.value);
   };
 
   if (isLoading) {
@@ -211,7 +189,7 @@ function GamesView() {
     return (
       <div>
         <div className="App">
-          <h1>Jogos por arbitro </h1>
+          <h1>Jogos por Arbitro </h1>
 
           <StyledInputRow>
             <StyledFormControl>
@@ -221,20 +199,16 @@ function GamesView() {
               <Select
                 labelId="demo-simple-select-autowidth-label"
                 id="demo-simple-select-autowidth"
-                value={age}
+                value={parameter}
                 onChange={handleChange}
                 fullWidth
-                label="Age"
+                label="Hospedagem"
               >
-                <MenuItem value="">{age}</MenuItem>
                 {HotelData.map((item, index) => (
                   <MenuItem value={item.id}>{item.nome}</MenuItem>
                 ))}
               </Select>
             </StyledFormControl>
-
-
-
           </StyledInputRow>
 
           <Table
@@ -248,4 +222,4 @@ function GamesView() {
   }
 }
 
-export default GamesView;
+export default SearchJudge;

@@ -1,14 +1,9 @@
 import { DefaultRequest } from "../../services/requests";
 import Table from "../../components/Table";
 import React, { useState } from "react";
-import {
-  Select,
-  MenuItem,
-  InputLabel,
-  SelectChangeEvent,
-} from "@mui/material";
+import { Select, MenuItem, InputLabel, SelectChangeEvent } from "@mui/material";
 import styled from "styled-components";
-import { HotelData , Players ,Judges} from "./selectData";
+import { HotelData, Players, Judges } from "./selectData";
 
 interface Partida {
   jogador_primario: number;
@@ -106,7 +101,7 @@ const StyledFormControl = styled.div`
 
 const StyledInputLabel = styled(InputLabel)``;
 
-function GamesView() {
+function SearchPlayer() {
   const { data, isLoading } = DefaultRequest<any>({
     url: `http://127.0.0.1:5000/programacao`,
   });
@@ -211,7 +206,7 @@ function GamesView() {
     return (
       <div>
         <div className="App">
-          <h1>Jogos por parametros </h1>
+          <h1>Jogos por Jogador </h1>
 
           <StyledInputRow>
             <StyledFormControl>
@@ -232,9 +227,6 @@ function GamesView() {
                 ))}
               </Select>
             </StyledFormControl>
-
-
-
           </StyledInputRow>
 
           <Table
@@ -248,4 +240,4 @@ function GamesView() {
   }
 }
 
-export default GamesView;
+export default SearchPlayer;
