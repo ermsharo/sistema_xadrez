@@ -1,3 +1,20 @@
+from models import (
+    create_participantes_campeonato_model,
+    create_partida_model,
+    create_registro_hospedagem_model,
+    create_salao_model,
+    db,
+    create_nacao_model,
+    create_participantes_model,
+    create_campeonato_model,
+    create_hospedagem_model,
+)
+import csv
+from random import randint, random
+from datetime import datetime, timedelta
+import random
+
+
 def add_campeonato(data_inicio, nome, nacao, jornada):
     Campeonato = create_campeonato_model()
     novo_campeonato = Campeonato(
