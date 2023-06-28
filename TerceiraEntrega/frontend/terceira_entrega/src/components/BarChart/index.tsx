@@ -1,5 +1,12 @@
-import React from 'react';
-import { ResponsiveContainer, BarChart, XAxis, YAxis, Bar, Tooltip } from 'recharts';
+import React from "react";
+import {
+  ResponsiveContainer,
+  BarChart,
+  XAxis,
+  YAxis,
+  Bar,
+  Tooltip,
+} from "recharts";
 
 // interface BarData {
 //   name: string;
@@ -11,9 +18,8 @@ interface BarPlotProps {
 }
 
 const BarPlot: React.FC<BarPlotProps> = ({ data }) => {
-  
-console.log("Bar plot data", data)
-  
+  console.log("Bar plot data", data);
+
   return (
     <ResponsiveContainer width="100%" height={300}>
       <BarChart data={data}>

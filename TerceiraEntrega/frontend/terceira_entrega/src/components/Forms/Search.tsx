@@ -1,11 +1,9 @@
-import BarPlot from "../../components/BarChart";
 import { DefaultRequest } from "../../services/requests";
 import Table from "../../components/Table";
 import React, { useMemo, useState } from "react";
 import {
   Select,
   MenuItem,
-  FormControl,
   InputLabel,
   SelectChangeEvent,
 } from "@mui/material";
@@ -94,7 +92,7 @@ const options = [
 
 const StyledInputRow = styled(InputLabel)`
   width: 100%;
- 
+
   display: flex;
   justify-content: space-between;
   gap: 2rem;
@@ -220,7 +218,7 @@ function GamesView() {
           <StyledInputRow>
             <StyledFormControl>
               <InputLabel id="demo-simple-select-autowidth-label">
-               Hotel
+                Hotel
               </InputLabel>
               <Select
                 labelId="demo-simple-select-autowidth-label"
@@ -241,7 +239,7 @@ function GamesView() {
             <StyledFormControl>
               {" "}
               <InputLabel id="demo-simple-select-autowidth-label">
-               Jogador
+                Jogador
               </InputLabel>
               <Select
                 labelId="demo-simple-select-autowidth-label"
@@ -263,7 +261,7 @@ function GamesView() {
             <StyledFormControl>
               {" "}
               <InputLabel id="demo-simple-select-autowidth-label">
-              Árbitro
+                Árbitro
               </InputLabel>
               <Select
                 labelId="demo-simple-select-autowidth-label"
