@@ -211,7 +211,7 @@ function GamesView() {
     return (
       <div>
         <div className="App">
-          <h1>Jogos por parametros </h1>
+          <h1>Jogos por arbitro </h1>
 
           <StyledInputRow>
             <StyledFormControl>

@@ -8,6 +8,10 @@ import GamesView from "../../pages/games-view";
 import GamesByCountry from "../../pages/games-by-county";
 import GamesByRounds from "../../pages/games-number-moviments";
 
+import SearchHotel from "../Forms/SearchHotel";
+import SearchPlayer from "../Forms/SearchPlayer";
+import SearchJudge from "../Forms/SearchJudge";
+
 interface TabPanelProps {
   children?: React.ReactNode;
   index: number;
@@ -68,13 +72,13 @@ export default function BuscarPartida() {
         <GamesView />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <Search />
+        <SearchPlayer />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <Search />
+        <SearchJudge />
       </TabPanel>
       <TabPanel value={value} index={3}>
-        <Search />
+        <SearchHotel />
       </TabPanel>
       <TabPanel value={value} index={4}>
         <GamesByRounds />
