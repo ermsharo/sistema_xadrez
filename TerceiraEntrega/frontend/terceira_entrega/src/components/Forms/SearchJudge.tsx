@@ -105,7 +105,7 @@ function SearchJudge() {
   const [parameter, setParameter] = useState("1");
 
   const { data, isLoading } = DefaultRequest<any>({
-    url: `http://127.0.0.1:5000/programacao_parametros/hospedagem/${parameter}`,
+    url: `http://127.0.0.1:5000/programacao_parametros/judge/${parameter}`,
   });
 
   const handleChange = (event: SelectChangeEvent) => {
@@ -190,7 +190,7 @@ function SearchJudge() {
           <StyledInputRow>
             <StyledFormControl>
               <InputLabel id="demo-simple-select-autowidth-label">
-                Hotel
+                Arbitro
               </InputLabel>
               <Select
                 labelId="demo-simple-select-autowidth-label"
@@ -198,9 +198,9 @@ function SearchJudge() {
                 value={parameter}
                 onChange={handleChange}
                 fullWidth
-                label="Hospedagem"
+                label="Arbitro"
               >
-                {HotelData.map((item, index) => (
+                {Judges.map((item, index) => (
                   <MenuItem value={item.id}>{item.nome}</MenuItem>
                 ))}
               </Select>

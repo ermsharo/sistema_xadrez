@@ -299,13 +299,13 @@ def programacao_parametros_player(player):
 
 
 
-@programacao_parametro.route("/programacao_parametros/Judge/<player>")
-def programacao_parametros_player(player):
+@programacao_parametro.route("/programacao_parametros/judge/<player>")
+def programacao_parametros_judge(player):
     saloes = pegar_saloes()
     # query_salao_by_hotel(saloes, hospedagem)
     Partida = create_partida_model()
     partidas_records = Partida.query.filter(
-        or_(Partida.jogador_primario == player, Partida.jogador_secundario == player)
+        or_(Partida.arbitro == player)
     ).all()
     print()
     participantes = pegar_participantes()
