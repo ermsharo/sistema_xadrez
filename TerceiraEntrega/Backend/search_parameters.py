@@ -28,6 +28,19 @@ def pegar_hoteis():
     print(json.dumps(new_record_list))
     return json.dumps(new_record_list)
 
+
+def pegar_jogadores():
+    Participantes = create_participantes_model()
+    hospedagem_records = Hospedagem.query.all()
+    #print("Campeonato", Paises)
+    record_list = [paises.__dict__ for paises in hospedagem_records]
+    print(" \n Record_list", record_list)
+    print(" \n Record_list type:", type(record_list))
+
+    new_record_list = [{'id': d['id'], 'nome': d['nome']} for d in record_list]
+    print(json.dumps(new_record_list))
+    return json.dumps(new_record_list)
+
 @my_parameters.route('/hotel')
 def hotel_route():
     # Create your object

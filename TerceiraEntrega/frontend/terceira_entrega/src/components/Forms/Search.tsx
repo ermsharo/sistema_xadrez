@@ -1,13 +1,16 @@
+import BarPlot from "../../components/BarChart";
 import { DefaultRequest } from "../../services/requests";
 import Table from "../../components/Table";
-import React, { useMemo, useState } from "react";
+import React, { useState } from "react";
 import {
   Select,
   MenuItem,
+  FormControl,
   InputLabel,
   SelectChangeEvent,
 } from "@mui/material";
 import styled from "styled-components";
+import { HotelData , Players ,Judges} from "./selectData";
 
 interface Partida {
   jogador_primario: number;
@@ -106,13 +109,10 @@ const StyledFormControl = styled.div`
 const StyledInputLabel = styled(InputLabel)``;
 
 function GamesView() {
-  const { data, isLoading } = useMemo(
-    () =>
-      DefaultRequest<any>({
-        url: `http://127.0.0.1:5000/programacao`,
-      }),
-    []
-  );
+  const { data, isLoading } = DefaultRequest<any>({
+    url: `http://127.0.0.1:5000/programacao`,
+  });
+
   const [selection1, setSelection1] = useState("");
   const [selection2, setSelection2] = useState("");
   const [selection3, setSelection3] = useState("");
@@ -135,7 +135,7 @@ function GamesView() {
     setSelection3(event.target.value);
   };
 
-  const [age, setAge] = useState("");
+  const [age, setAge] = useState("todos");
   const handleChange = (event: SelectChangeEvent) => {
     setAge(event.target.value);
   };
@@ -228,18 +228,15 @@ function GamesView() {
                 fullWidth
                 label="Age"
               >
-                <MenuItem value="">
-                  <em>None</em>
-                </MenuItem>
-                <MenuItem value={10}>Twenty</MenuItem>
-                <MenuItem value={21}>Twenty one</MenuItem>
-                <MenuItem value={22}>Twenty one and a half</MenuItem>
+                <MenuItem value="">{age}</MenuItem>
+                {HotelData.map((item, index) => (
+                  <MenuItem value={item.id}>{item.nome}</MenuItem>
+                ))}
               </Select>
             </StyledFormControl>
             <StyledFormControl>
-              {" "}
               <InputLabel id="demo-simple-select-autowidth-label">
-                Jogador
+               Jogador
               </InputLabel>
               <Select
                 labelId="demo-simple-select-autowidth-label"
@@ -249,19 +246,16 @@ function GamesView() {
                 fullWidth
                 label="Age"
               >
-                <MenuItem value="">
-                  <em>None</em>
-                </MenuItem>
-                <MenuItem value={10}>Twenty</MenuItem>
-                <MenuItem value={21}>Twenty one</MenuItem>
-                <MenuItem value={22}>Twenty one and a half</MenuItem>
+                <MenuItem value="">{age}</MenuItem>
+                {Players.map((item, index) => (
+                  <MenuItem value={item.id}>{item.nome}</MenuItem>
+                ))}
               </Select>
             </StyledFormControl>
 
             <StyledFormControl>
-              {" "}
               <InputLabel id="demo-simple-select-autowidth-label">
-                Árbitro
+               Arbitros
               </InputLabel>
               <Select
                 labelId="demo-simple-select-autowidth-label"
@@ -271,14 +265,13 @@ function GamesView() {
                 fullWidth
                 label="Age"
               >
-                <MenuItem value="">
-                  <em>None</em>
-                </MenuItem>
-                <MenuItem value={10}>Twenty</MenuItem>
-                <MenuItem value={21}>Twenty one</MenuItem>
-                <MenuItem value={22}>Twenty one and a half</MenuItem>
+                <MenuItem value="">{age}</MenuItem>
+                {Judges.map((item, index) => (
+                  <MenuItem value={item.id}>{item.nome}</MenuItem>
+                ))}
               </Select>
             </StyledFormControl>
+
           </StyledInputRow>
 
           <Table
