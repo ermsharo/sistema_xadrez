@@ -80,11 +80,6 @@ function convertObject(obj: Partida): Partida_Normalizada {
   return convertedObj;
 }
 
-const options = [
-  { value: "option1", label: "Option 1" },
-  { value: "option2", label: "Option 2" },
-  { value: "option3", label: "Option 3" },
-];
 
 const StyledInputRow = styled(InputLabel)`
   width: 100%;
@@ -99,38 +94,17 @@ const StyledFormControl = styled.div`
   padding: 1rem;
 `;
 
-const StyledInputLabel = styled(InputLabel)``;
 
 function SearchPlayer() {
+  const [parameter, setParameter] = useState("1");
+
   const { data, isLoading } = DefaultRequest<any>({
-    url: `http://127.0.0.1:5000/programacao`,
+    url: `http://127.0.0.1:5000/programacao_parametros/player/${parameter}`,
   });
 
-  const [selection1, setSelection1] = useState("");
-  const [selection2, setSelection2] = useState("");
-  const [selection3, setSelection3] = useState("");
 
-  const handleSelection1Change = (event: {
-    target: { value: React.SetStateAction<string> };
-  }) => {
-    setSelection1(event.target.value);
-  };
-
-  const handleSelection2Change = (event: {
-    target: { value: React.SetStateAction<string> };
-  }) => {
-    setSelection2(event.target.value);
-  };
-
-  const handleSelection3Change = (event: {
-    target: { value: React.SetStateAction<string> };
-  }) => {
-    setSelection3(event.target.value);
-  };
-
-  const [age, setAge] = useState("todos");
   const handleChange = (event: SelectChangeEvent) => {
-    setAge(event.target.value);
+    setParameter(event.target.value);
   };
 
   if (isLoading) {
@@ -211,18 +185,17 @@ function SearchPlayer() {
           <StyledInputRow>
             <StyledFormControl>
               <InputLabel id="demo-simple-select-autowidth-label">
-                Hotel
+              Jogador
               </InputLabel>
               <Select
                 labelId="demo-simple-select-autowidth-label"
                 id="demo-simple-select-autowidth"
-                value={age}
+                value={parameter}
                 onChange={handleChange}
                 fullWidth
-                label="Age"
+                label="Jogador"
               >
-                <MenuItem value="">{age}</MenuItem>
-                {HotelData.map((item, index) => (
+                {Players.map((item) => (
                   <MenuItem value={item.id}>{item.nome}</MenuItem>
                 ))}
               </Select>

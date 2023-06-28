@@ -296,3 +296,49 @@ def programacao_parametros_player(player):
     ]
     # print("Partida records:", new_record_list)
     return json.dumps(new_record_list)
+
+
+
+@programacao_parametro.route("/programacao_parametros/Judge/<player>")
+def programacao_parametros_player(player):
+    saloes = pegar_saloes()
+    # query_salao_by_hotel(saloes, hospedagem)
+    Partida = create_partida_model()
+    partidas_records = Partida.query.filter(
+        or_(Partida.jogador_primario == player, Partida.jogador_secundario == player)
+    ).all()
+    print()
+    participantes = pegar_participantes()
+    paises = pegar_paises()
+
+    campeonatos = pegar_campeonatos()
+    # print("\n \n Campeonato", campeonatos)
+    record_list = [partida.__dict__ for partida in partidas_records]
+    # matchRecords =  CompararSaloes(record_list, saloes, hospedagem)
+    new_record_list = [
+        {
+            "jogador_primario": d["jogador_primario"],
+            "jogador_secundario": d["jogador_secundario"],
+            "jogador_primario_nome": query_participantes(
+                participantes, d["jogador_primario"]
+            ),
+            "jogador_secundario_nome": query_participantes(
+                participantes, d["jogador_secundario"]
+            ),
+            "arbitro": d["arbitro"],
+            "arbitro_nome": query_participantes(participantes, d["arbitro"]),
+            "pecas_pretas": d["pecas_pretas"],
+            "pecas_brancas": d["pecas_brancas"],
+            "data_inicio": d["data_inicio"],
+            "data_fim": d["data_fim"],
+            "vencedor": query_participantes(participantes, d["vencedor"]),
+            "chave_campeonato": d["chave_campeonato"],
+            "campeonato": query_campeonato(campeonatos, d["chave_campeonato"]),
+            "chave_salao": d["chave_salao"],
+            "salao": query_salao(saloes, d["chave_salao"]),
+            "numero_jogadas": d["numero_jogadas"],
+        }
+        for d in record_list
+    ]
+    # print("Partida records:", new_record_list)
+    return json.dumps(new_record_list)

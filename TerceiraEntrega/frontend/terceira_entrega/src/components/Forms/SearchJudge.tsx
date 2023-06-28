@@ -108,10 +108,6 @@ function SearchJudge() {
     url: `http://127.0.0.1:5000/programacao_parametros/hospedagem/${parameter}`,
   });
 
-  const [selection1, setSelection1] = useState("");
-  const [selection2, setSelection2] = useState("");
-  const [selection3, setSelection3] = useState("");
-
   const handleChange = (event: SelectChangeEvent) => {
     setParameter(event.target.value);
   };
