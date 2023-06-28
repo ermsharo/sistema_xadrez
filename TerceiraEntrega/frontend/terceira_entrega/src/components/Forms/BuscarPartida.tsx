@@ -3,7 +3,6 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import Search from "./Search";
 import GamesView from "../../pages/games-view";
 import GamesByCountry from "../../pages/games-by-county";
 import GamesByRounds from "../../pages/games-number-moviments";

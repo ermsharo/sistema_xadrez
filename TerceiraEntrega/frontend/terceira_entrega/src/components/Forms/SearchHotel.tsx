@@ -102,10 +102,10 @@ const StyledFormControl = styled.div`
 const StyledInputLabel = styled(InputLabel)``;
 
 function SearchHotel() {
-  const [parameter, setParameter] = useState("1");
+  const [parameter, setParameter] = useState(HotelData[0].id);
 
   const { data, isLoading } = DefaultRequest<any>({
-    url: `http://127.0.0.1:5000/programacao_parametros/hospedagem/${parameter}`,
+    url: `http://127.0.0.1:5000/hospedagem/${parameter}`,
   });
 
   const handleChange = (event: SelectChangeEvent) => {

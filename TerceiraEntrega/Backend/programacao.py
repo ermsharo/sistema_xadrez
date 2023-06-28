@@ -165,4 +165,8 @@ def query_hospedagem(hospedagem, id):
 
 @programacao.route("/programacao")
 def partidas():
-    return pegar_partidas()
+    try:
+        return pegar_partidas()
+    except Exception as e:
+        # Handle the error or return an appropriate response
+        return str(e)

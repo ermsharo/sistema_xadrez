@@ -96,10 +96,10 @@ const StyledFormControl = styled.div`
 
 
 function SearchPlayer() {
-  const [parameter, setParameter] = useState("1");
+  const [parameter, setParameter] = useState(Players[0].id);
 
   const { data, isLoading } = DefaultRequest<any>({
-    url: `http://127.0.0.1:5000/programacao_parametros/player/${parameter}`,
+    url: `http://127.0.0.1:5000/player/${parameter}`,
   });
 
 

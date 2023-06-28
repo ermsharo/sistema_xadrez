@@ -10,7 +10,7 @@ from models import (
 )
 from sqlalchemy import or_
 
-
+programacao_parametro = Blueprint("programacao_parametro", __name__)
 
 def pegar_campeonatos():
     Campeonato = create_campeonato_model()
@@ -201,7 +201,7 @@ def CompararSaloes(record_list, saloes, hospedagem_id):
     return matching_records
 
 
-@programacao_parametro.route("/programacao_parametros/hospedagem/<hospedagem>")
+@programacao_parametro.route("/hospedagem/<hospedagem>")
 def programacao_parametros(hospedagem):
     saloes = pegar_saloes()
     query_salao_by_hotel(saloes, hospedagem)
@@ -243,7 +243,7 @@ def programacao_parametros(hospedagem):
     return json.dumps(new_record_list)
 
 
-@programacao_parametro.route("/programacao_parametros/player/<player>")
+@programacao_parametro.route("/player/<player>")
 def programacao_parametros_player(player):
     saloes = pegar_saloes()
 
@@ -288,7 +288,7 @@ def programacao_parametros_player(player):
     return json.dumps(new_record_list)
 
 
-@programacao_parametro.route("/programacao_parametros/judge/<player>")
+@programacao_parametro.route("/judge/<player>")
 def programacao_parametros_judge(player):
     saloes = pegar_saloes()
 

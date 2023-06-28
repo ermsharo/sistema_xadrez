@@ -8,8 +8,9 @@ import csv
 from search_parameters import my_parameters
 from players_by_country import players_by_country
 from games_number_of_rounds import  games_number_rounds
+from find_by_parameter import programacao_parametro
 from programacao import programacao
-# from find_by_parameter import programacao_parametro
+
 import pandas as pd
 from flask_cors import CORS
 from random import randint, random
@@ -24,7 +25,7 @@ db.init_app(app)
 app.register_blueprint(my_parameters)
 app.register_blueprint(players_by_country)
 app.register_blueprint(programacao)
-# app.register_blueprint(programacao_parametro)
+app.register_blueprint(programacao_parametro)
 app.register_blueprint(games_number_rounds)
 CORS(app)
 
