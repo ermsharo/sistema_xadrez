@@ -113,7 +113,7 @@ function GamesNumberMoviments() {
       <div>
         <div className="App">
           <h1>Jogos por numero de jogadas</h1>
-          <BarPlot data={partidas_noramalizadas} />
+          {/* <BarPlot data={partidas_noramalizadas} /> */}
 
           <Table
             data={partidas_noramalizadas}

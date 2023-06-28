@@ -10,17 +10,14 @@ from models import (
 )
 from sqlalchemy import or_
 
-programacao_parametro = Blueprint("programacao_parametro", __name__)
 
 
 def pegar_campeonatos():
     Campeonato = create_campeonato_model()
     Campeonato_records = Campeonato.query.all()
-    # print("Campeonato", Campeonato_records)
+
     record_list = [campeonato.__dict__ for campeonato in Campeonato_records]
-    print("Aqui esta", record_list)
     new_record_list = [{"id": d["id"], "nome": d["nome"]} for d in record_list]
-    print(" \n \n  new rocrd list", new_record_list)
     return new_record_list
 
 
@@ -37,12 +34,11 @@ def pegar_partidas(partida_id):
     partidas_records = Partida.query.all()
     participantes = pegar_participantes()
     paises = pegar_paises()
-    # print(" \n \n Paises ", paises)
+
     saloes = pegar_saloes()
-    # print(" \n \n Saloes -> ", saloes)
 
     campeonatos = pegar_campeonatos()
-    # print("\n \n Campeonato", campeonatos)
+
     record_list = [partida.__dict__ for partida in partidas_records]
     new_record_list = [
         {
@@ -69,17 +65,16 @@ def pegar_partidas(partida_id):
         }
         for d in record_list
     ]
-    print("Partida records:", new_record_list)
     return json.dumps(new_record_list)
 
 
 def pegar_participantes():
     Participantes = create_participantes_model()
     participantes_records = Participantes.query.all()
-    # print("Partida records:", participantes_records)
+
     record_list = [participantes.__dict__ for participantes in participantes_records]
     new_record_list = [{"id": d["id"], "nome": d["nome"]} for d in record_list]
-    # print("new record list", new_record_list)
+
     return new_record_list
 
 
@@ -87,7 +82,7 @@ def pegar_saloes():
     Salao = create_salao_model()
     Salao_records = Salao.query.all()
     hospedagens = pegar_hospedagens()
-    # print("Partida records:", Salao_records)
+
     record_list = [participantes.__dict__ for participantes in Salao_records]
     new_record_list = [
         {
@@ -105,7 +100,6 @@ def pegar_saloes():
         }
         for d in record_list
     ]
-    print("new record list", new_record_list)
     return new_record_list
 
 
@@ -138,7 +132,6 @@ def query_salao(saloes, id):
 def query_salao_by_hotel(saloes, hotel_id):
     saloes_id = []
     for record in saloes:
-        # print(" \n Salao records", record)
         if record["chave_hospedagem"] == hotel_id:
             saloes_id.append(record)
 
@@ -180,11 +173,8 @@ def query_games(saloes):
 
 
 def CompararSaloes(record_list, saloes, hospedagem_id):
-    # print("Saloes", saloes)
-    # print("Record list ->", record_list)
-    # saloesByHotel = query_salao_by_hotel(saloes, hospedagem_id)
-    # print("Saloes by hotel", saloesByHotel)
-    print("Hospedagem id", hospedagem_id)
+    saloesByHotel = query_salao_by_hotel(saloes, hospedagem_id)
+
     matching_records = [
         {
             key: record1[key]
@@ -207,7 +197,7 @@ def CompararSaloes(record_list, saloes, hospedagem_id):
         for record2 in saloes
         if record1["chave_salao"] == record2["id"]
     ]
-    print("\n \n \n Match records ", matching_records)
+
     return matching_records
 
 
@@ -221,7 +211,7 @@ def programacao_parametros(hospedagem):
     paises = pegar_paises()
 
     campeonatos = pegar_campeonatos()
-    # print("\n \n Campeonato", campeonatos)
+
     record_list = [partida.__dict__ for partida in partidas_records]
     matchRecords = CompararSaloes(record_list, saloes, hospedagem)
     new_record_list = [
@@ -249,26 +239,26 @@ def programacao_parametros(hospedagem):
         }
         for d in matchRecords
     ]
-    # print("Partida records:", new_record_list)
+
     return json.dumps(new_record_list)
 
 
 @programacao_parametro.route("/programacao_parametros/player/<player>")
 def programacao_parametros_player(player):
     saloes = pegar_saloes()
-    # query_salao_by_hotel(saloes, hospedagem)
+
     Partida = create_partida_model()
     partidas_records = Partida.query.filter(
         or_(Partida.jogador_primario == player, Partida.jogador_secundario == player)
     ).all()
-    print()
+
     participantes = pegar_participantes()
     paises = pegar_paises()
 
     campeonatos = pegar_campeonatos()
-    # print("\n \n Campeonato", campeonatos)
+
     record_list = [partida.__dict__ for partida in partidas_records]
-    # matchRecords =  CompararSaloes(record_list, saloes, hospedagem)
+
     new_record_list = [
         {
             "jogador_primario": d["jogador_primario"],
@@ -294,27 +284,23 @@ def programacao_parametros_player(player):
         }
         for d in record_list
     ]
-    # print("Partida records:", new_record_list)
-    return json.dumps(new_record_list)
 
+    return json.dumps(new_record_list)
 
 
 @programacao_parametro.route("/programacao_parametros/judge/<player>")
 def programacao_parametros_judge(player):
     saloes = pegar_saloes()
-    # query_salao_by_hotel(saloes, hospedagem)
+
     Partida = create_partida_model()
-    partidas_records = Partida.query.filter(
-        or_(Partida.arbitro == player)
-    ).all()
-    print()
+    partidas_records = Partida.query.filter(or_(Partida.arbitro == player)).all()
     participantes = pegar_participantes()
     paises = pegar_paises()
 
     campeonatos = pegar_campeonatos()
-    # print("\n \n Campeonato", campeonatos)
+
     record_list = [partida.__dict__ for partida in partidas_records]
-    # matchRecords =  CompararSaloes(record_list, saloes, hospedagem)
+
     new_record_list = [
         {
             "jogador_primario": d["jogador_primario"],
@@ -340,5 +326,5 @@ def programacao_parametros_judge(player):
         }
         for d in record_list
     ]
-    # print("Partida records:", new_record_list)
+
     return json.dumps(new_record_list)
