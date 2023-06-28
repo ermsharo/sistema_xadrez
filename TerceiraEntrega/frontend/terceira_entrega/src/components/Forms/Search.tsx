@@ -1,6 +1,15 @@
 import BarPlot from "../../components/BarChart";
 import { DefaultRequest } from "../../services/requests";
 import Table from "../../components/Table";
+import React, { useMemo, useState } from "react";
+import {
+  Select,
+  MenuItem,
+  FormControl,
+  InputLabel,
+  SelectChangeEvent,
+} from "@mui/material";
+import styled from "styled-components";
 
 interface Partida {
   jogador_primario: number;
@@ -77,10 +86,61 @@ function convertObject(obj: Partida): Partida_Normalizada {
   return convertedObj;
 }
 
+const options = [
+  { value: "option1", label: "Option 1" },
+  { value: "option2", label: "Option 2" },
+  { value: "option3", label: "Option 3" },
+];
+
+const StyledInputRow = styled(InputLabel)`
+  width: 100%;
+ 
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-direction: column;
+`;
+
+const StyledFormControl = styled.div`
+  padding: 1rem;
+`;
+
+const StyledInputLabel = styled(InputLabel)``;
+
 function GamesView() {
-  const { data, isLoading } = DefaultRequest<any>({
-    url: `http://127.0.0.1:5000/programacao`,
-  });
+  const { data, isLoading } = useMemo(
+    () =>
+      DefaultRequest<any>({
+        url: `http://127.0.0.1:5000/programacao`,
+      }),
+    []
+  );
+  const [selection1, setSelection1] = useState("");
+  const [selection2, setSelection2] = useState("");
+  const [selection3, setSelection3] = useState("");
+
+  const handleSelection1Change = (event: {
+    target: { value: React.SetStateAction<string> };
+  }) => {
+    setSelection1(event.target.value);
+  };
+
+  const handleSelection2Change = (event: {
+    target: { value: React.SetStateAction<string> };
+  }) => {
+    setSelection2(event.target.value);
+  };
+
+  const handleSelection3Change = (event: {
+    target: { value: React.SetStateAction<string> };
+  }) => {
+    setSelection3(event.target.value);
+  };
+
+  const [age, setAge] = useState("");
+  const handleChange = (event: SelectChangeEvent) => {
+    setAge(event.target.value);
+  };
 
   if (isLoading) {
     return <>loading</>;
@@ -151,10 +211,77 @@ function GamesView() {
         return a.numero_jogadas - b.numero_jogadas;
       }
     );
+
     return (
       <div>
         <div className="App">
-          <h1>Jogos por parametros</h1>
+          <h1>Jogos por parametros </h1>
+
+          <StyledInputRow>
+            <StyledFormControl>
+              <InputLabel id="demo-simple-select-autowidth-label">
+               Hotel
+              </InputLabel>
+              <Select
+                labelId="demo-simple-select-autowidth-label"
+                id="demo-simple-select-autowidth"
+                value={age}
+                onChange={handleChange}
+                fullWidth
+                label="Age"
+              >
+                <MenuItem value="">
+                  <em>None</em>
+                </MenuItem>
+                <MenuItem value={10}>Twenty</MenuItem>
+                <MenuItem value={21}>Twenty one</MenuItem>
+                <MenuItem value={22}>Twenty one and a half</MenuItem>
+              </Select>
+            </StyledFormControl>
+            <StyledFormControl>
+              {" "}
+              <InputLabel id="demo-simple-select-autowidth-label">
+               Jogador
+              </InputLabel>
+              <Select
+                labelId="demo-simple-select-autowidth-label"
+                id="demo-simple-select-autowidth"
+                value={age}
+                onChange={handleChange}
+                fullWidth
+                label="Age"
+              >
+                <MenuItem value="">
+                  <em>None</em>
+                </MenuItem>
+                <MenuItem value={10}>Twenty</MenuItem>
+                <MenuItem value={21}>Twenty one</MenuItem>
+                <MenuItem value={22}>Twenty one and a half</MenuItem>
+              </Select>
+            </StyledFormControl>
+
+            <StyledFormControl>
+              {" "}
+              <InputLabel id="demo-simple-select-autowidth-label">
+              Árbitro
+              </InputLabel>
+              <Select
+                labelId="demo-simple-select-autowidth-label"
+                id="demo-simple-select-autowidth"
+                value={age}
+                onChange={handleChange}
+                fullWidth
+                label="Age"
+              >
+                <MenuItem value="">
+                  <em>None</em>
+                </MenuItem>
+                <MenuItem value={10}>Twenty</MenuItem>
+                <MenuItem value={21}>Twenty one</MenuItem>
+                <MenuItem value={22}>Twenty one and a half</MenuItem>
+              </Select>
+            </StyledFormControl>
+          </StyledInputRow>
 
           <Table
             data={partidas_noramalizadas}
