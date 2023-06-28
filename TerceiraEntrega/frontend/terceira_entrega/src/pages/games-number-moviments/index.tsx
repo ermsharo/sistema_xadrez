@@ -2,6 +2,10 @@ import BarPlot from "../../components/BarChart";
 import { DefaultRequest } from "../../services/requests";
 import Table from "../../components/Table";
 
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import React, { useState } from "react";
+
 interface Partida {
   jogador_primario: number;
   jogador_secundario: number;
@@ -78,8 +82,18 @@ function convertObject(obj: Partida): Partida_Normalizada {
 }
 
 function GamesNumberMoviments() {
+  const [value, setValue] = useState("");
+
+  const handleChange = (event: { target: { value: any; }; }) => {
+    const inputValue = event.target.value;
+    // Ensure only numbers are entered
+    if (!isNaN(inputValue)) {
+      setValue(inputValue);
+    }
+  };
+
   const { data, isLoading } = DefaultRequest<any>({
-    url: `http://127.0.0.1:5000/programacao`,
+    url: `http://127.0.0.1:5000/number_of_rounds/${value}`,
   });
 
   if (isLoading) {
@@ -93,28 +107,51 @@ function GamesNumberMoviments() {
     const partidas_noramalizadas = data.map(convertObject);
     console.log("Here stay ->", partidas_noramalizadas);
 
-
     const columns = [
-      { key: "match_name" as keyof (typeof data.count_by_country[0]), label: "jogo" },
-      { key: "data_inicio" as keyof (typeof data.count_by_country[0]), label: "Inicio" },
-      { key: "data_fim" as keyof (typeof data.count_by_country[0]), label: "Fim" },
       {
-        key: "numero_jogadas" as keyof (typeof data.count_by_country[0]),
+        key: "match_name" as keyof (typeof data.count_by_country)[0],
+        label: "jogo",
+      },
+      {
+        key: "data_inicio" as keyof (typeof data.count_by_country)[0],
+        label: "Inicio",
+      },
+      {
+        key: "data_fim" as keyof (typeof data.count_by_country)[0],
+        label: "Fim",
+      },
+      {
+        key: "numero_jogadas" as keyof (typeof data.count_by_country)[0],
         label: "numero de jogadas",
       },
 
       // Add more columns as needed
     ];
 
-    partidas_noramalizadas.sort((a: { numero_jogadas: number; }, b: { numero_jogadas: number; }) => {
-      return a.numero_jogadas - b.numero_jogadas;
-  });
+    partidas_noramalizadas.sort(
+      (a: { numero_jogadas: number }, b: { numero_jogadas: number }) => {
+        return a.numero_jogadas - b.numero_jogadas;
+      }
+    );
     return (
       <div>
         <div className="App">
           <h1>Jogos por numero de jogadas</h1>
           {/* <BarPlot data={partidas_noramalizadas} /> */}
-
+          <Box>
+            <TextField
+              id="outlined-basic"
+              label="Outlined"
+              variant="outlined"
+              type="number"
+              value={value}
+              onChange={handleChange}
+              inputProps={{
+                inputMode: "numeric",
+                pattern: "[0-9]*",
+              }}
+            />
+          </Box>
           <Table
             data={partidas_noramalizadas}
             columns={columns}
