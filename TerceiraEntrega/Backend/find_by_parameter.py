@@ -12,6 +12,7 @@ from sqlalchemy import or_
 
 programacao_parametro = Blueprint("programacao_parametro", __name__)
 
+
 def pegar_campeonatos():
     Campeonato = create_campeonato_model()
     Campeonato_records = Campeonato.query.all()
@@ -130,12 +131,62 @@ def query_salao(saloes, id):
 
 
 def query_salao_by_hotel(saloes, hotel_id):
-    saloes_id = []
+    saloes_ids = []
     for record in saloes:
-        if record["chave_hospedagem"] == hotel_id:
-            saloes_id.append(record)
+        print("Record here -> ", record["chave_hospedagem"])
+        print("Hotel id here -> ",hotel_id )
+        if str(record["chave_hospedagem"]) == str(hotel_id):
+            print("Encontramos")
+            saloes_ids.append(record['id'])
 
-    return saloes_id
+    return query_partida_by_salao(saloes_ids)
+
+def query_partida_by_salao(saloes_ids):
+    Partidas_id = []
+    Partida = create_partida_model()
+    partidas_records = Partida.query.all()
+    record_list = [partida.__dict__ for partida in partidas_records]
+    saloes = pegar_saloes()
+    campeonatos = pegar_campeonatos()
+    Partida = create_partida_model()
+    participantes = pegar_participantes()
+    new_record_list = [
+        {
+            "jogador_primario": d["jogador_primario"],
+            "jogador_secundario": d["jogador_secundario"],
+            "jogador_primario_nome": query_participantes(
+                participantes, d["jogador_primario"]
+            ),
+            "jogador_secundario_nome": query_participantes(
+                participantes, d["jogador_secundario"]
+            ),
+            "arbitro": d["arbitro"],
+            "arbitro_nome": query_participantes(participantes, d["arbitro"]),
+            "pecas_pretas": d["pecas_pretas"],
+            "pecas_brancas": d["pecas_brancas"],
+            "data_inicio": d["data_inicio"],
+            "data_fim": d["data_fim"],
+            "vencedor": query_participantes(participantes, d["vencedor"]),
+            "chave_campeonato": d["chave_campeonato"],
+            "campeonato": query_campeonato(campeonatos, d["chave_campeonato"]),
+            "chave_salao": d["chave_salao"],
+            "salao": query_salao(saloes, d["chave_salao"]),
+            "numero_jogadas": d["numero_jogadas"],
+        }
+        for d in record_list
+    ]
+
+
+    for record in new_record_list:
+        print("Record here -> ", record["chave_salao"])
+        for salao_id in saloes_ids:
+            if str(record["chave_salao"]) == str(salao_id):
+                print("Encontramos")
+                Partidas_id.append(record)
+    print("Partidas id")
+    return Partidas_id
+
+
 
 
 def query_participantes(participantes, id):
@@ -204,7 +255,7 @@ def CompararSaloes(record_list, saloes, hospedagem_id):
 @programacao_parametro.route("/hospedagem/<hospedagem>")
 def programacao_parametros(hospedagem):
     saloes = pegar_saloes()
-    query_salao_by_hotel(saloes, hospedagem)
+    saloes_by_hotel = query_salao_by_hotel(saloes, hospedagem)
     Partida = create_partida_model()
     partidas_records = Partida.query.all()
     participantes = pegar_participantes()
@@ -214,6 +265,7 @@ def programacao_parametros(hospedagem):
 
     record_list = [partida.__dict__ for partida in partidas_records]
     matchRecords = CompararSaloes(record_list, saloes, hospedagem)
+
     new_record_list = [
         {
             "jogador_primario": d["jogador_primario"],
@@ -240,7 +292,7 @@ def programacao_parametros(hospedagem):
         for d in matchRecords
     ]
 
-    return json.dumps(new_record_list)
+    return json.dumps(saloes_by_hotel)
 
 
 @programacao_parametro.route("/player/<player>")
