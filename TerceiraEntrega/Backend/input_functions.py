@@ -64,13 +64,13 @@ def add_based_in_csv_participantes():
         arbitro = row["arbitro"]
         chave_nacao = findIdByCountry(chave_nacao)
         numero_associado = generate_random_number()
-        print(" \n nome: ", nome)
-        print(" \n endereco: ", endereco)
-        print(" \n telefone: ", telefone)
-        print(" \n nivel_jogo: ", nivel_jogo)
-        print(" \n arbitro: ", arbitro)
-        print(" \n chave_nacao: ", chave_nacao)
-        print(" \n numero_associado", numero_associado)
+        # print(" \n nome: ", nome)
+        # print(" \n endereco: ", endereco)
+        # print(" \n telefone: ", telefone)
+        # print(" \n nivel_jogo: ", nivel_jogo)
+        # print(" \n arbitro: ", arbitro)
+        # print(" \n chave_nacao: ", chave_nacao)
+        # print(" \n numero_associado", numero_associado)
         add_participant(
             numero_associado, nome, endereco, telefone, nivel_jogo, chave_nacao, arbitro
         )

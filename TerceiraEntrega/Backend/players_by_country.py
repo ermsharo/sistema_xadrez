@@ -22,12 +22,12 @@ def filterCountryByID(countries, id):
 
     #print('countries', countries)
     for item in countries:
-        print("\n \n ",type(item['id']))
+        # print("\n \n ",type(item['id']))
         #print("\n \n Paises_ID",type(item['id']))
         #print("\n \n ID: ",type(str(id)))
 
         if item['id'] == int(id):
-            print("\n \n achamos \n \n")
+            # print("\n \n achamos \n \n")
             return item['nome']
 
             #print ("\n \n", item['nome'])
@@ -51,7 +51,7 @@ def get_players_by_country():
     jogadores_records = Jogadores.query.all()
 
     paises = pegar_paises()
-    print("Campeonato", paises)
+    # print("Campeonato", paises)
 
     record_list = [jogadores.__dict__ for jogadores in jogadores_records]
     # print(" \n Record_list", record_list)

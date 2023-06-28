@@ -1,7 +1,10 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import and_
-
+from models import (
+    db,
+)
+import csv
 from search_parameters import my_parameters
 from players_by_country import players_by_country
 from programacao import programacao
@@ -32,10 +35,9 @@ def internal_server_error(error):
     return f"Error {error} ", 500
 
 
-
 def main():
     # Usage example:
-    #with app.app_context():
+    # with app.app_context():
     app.run()
 
 

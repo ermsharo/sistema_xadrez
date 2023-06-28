@@ -38,7 +38,7 @@ def pegar_partidas():
     paises = pegar_paises()
     # print(" \n \n Paises ", paises)
     saloes = pegar_saloes()
-    print(" \n \n Saloes -> ", saloes)
+    # print(" \n \n Saloes -> ", saloes)
 
     campeonatos = pegar_campeonatos()
     # print("\n \n Campeonato", campeonatos)
@@ -76,10 +76,10 @@ def pegar_partidas():
 def pegar_participantes():
     Participantes = create_participantes_model()
     participantes_records = Participantes.query.all()
-    print("Partida records:", participantes_records)
+    # print("Partida records:", participantes_records)
     record_list = [participantes.__dict__ for participantes in participantes_records]
     new_record_list = [{"id": d["id"], "nome": d["nome"]} for d in record_list]
-    print("new record list", new_record_list)
+    # print("new record list", new_record_list)
     return new_record_list
 
 
@@ -87,7 +87,7 @@ def pegar_saloes():
     Salao = create_salao_model()
     Salao_records = Salao.query.all()
     hospedagens = pegar_hospedagens()
-    print("Partida records:", Salao_records)
+    # print("Partida records:", Salao_records)
     record_list = [participantes.__dict__ for participantes in Salao_records]
     new_record_list = [
         {
@@ -105,7 +105,7 @@ def pegar_saloes():
         }
         for d in record_list
     ]
-    print("new record list", new_record_list)
+    # print("new record list", new_record_list)
     return new_record_list
 
 
